@@ -1,0 +1,30 @@
+header {
+  background-color: blue;
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  color: white;
+  font-weight: bolder;
+}
+
+#page-title {
+  padding: 20px;
+  margin: auto;
+}
+
+#search-button {
+  width: 100%;
+}
+
+.list-group-item {
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
+
+#weather-box {
+  height: 200px;
+  border: black dashed 2px;
+  margin-top: 20px;
+  margin-left: 400px;
+}
