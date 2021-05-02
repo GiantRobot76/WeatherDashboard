@@ -10,6 +10,7 @@ $(document).ready(function () {
   var localTemperature = $("#temp");
   var localWind = $("#wind");
   var localHumidity = $("#humidity");
+  var localUV = $("#UV");
   var cityLat;
   var cityLon;
 
@@ -55,8 +56,8 @@ $(document).ready(function () {
         localHumidity.text(data.main.humidity);
         cityLat = data.coord.lat;
         cityLon = data.coord.lon;
-        console.log(cityLat);
-        console.log(cityLon);
+        // console.log(cityLat);
+        // console.log(cityLon);
 
         var newReqUrl =
           "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -70,10 +71,8 @@ $(document).ready(function () {
             return response.json();
           })
           .then(function (data2) {
-            console.log("worked");
+            localUV.text(data2.current.uvi);
           });
-
-        console.log(newReqUrl);
       });
 
     //reconfigure request URL for OpenWeatherMap "One Call API Query Required Here"
