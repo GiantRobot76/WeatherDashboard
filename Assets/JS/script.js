@@ -30,13 +30,13 @@ $(document).ready(function () {
             currentCity +
             "&units=imperial&appid=255055a794435e93d10c1986c06d9c9b";
 
-          getCurrentWeatherAPI();
+          getWeatherAPI();
         });
       cityList.append(appendLi);
     }
   }
 
-  function getCurrentWeatherAPI() {
+  function getWeatherAPI() {
     fetch(requestUrl)
       .then(function (response) {
         return response.json();
@@ -55,32 +55,36 @@ $(document).ready(function () {
         localHumidity.text(data.main.humidity);
         cityLat = data.coord.lat;
         cityLon = data.coord.lon;
-        // console.log(cityLat);
-        // console.log(cityLon);
+        console.log(cityLat);
+        console.log(cityLon);
+
+        var newReqUrl =
+          "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+          cityLat +
+          "&lon=" +
+          cityLon +
+          "&exclude=minutely,hourly&units=imperial&appid=255055a794435e93d10c1986c06d9c9b";
+
+        fetch(newReqUrl)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data2) {
+            console.log("worked");
+          });
+
+        console.log(newReqUrl);
       });
+
+    //reconfigure request URL for OpenWeatherMap "One Call API Query Required Here"
+
+    // fetch(newReqUrl).then(function (response) {
+    //   return response.json();
+    //   console.log("ok");
+    // });
   }
 
-  //set URL for forecast and UV data
-
-  // var rootString = "https://api.openweathermap.org/data/2.5/onecall?";
-  // var remainder =
-  //   "lat=" +
-  //   cityLat +
-  //   "&lon=" +
-  //   cityLon +
-  //   "&appid=255055a794435e93d10c1986c06d9c9b";
-  // var fcstURL = rootString + remainder;
-  // console.log(fcstURL);
-
-  // function getFcstAPI() {
-  //   fetch(fcstRequestURL)
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(function (data) {
-  //       console.log(data);
-  //     });
-  // }
+  //https://api.openweathermap.org/data/2.5/onecall?lat=35.6895&lon=139.6917&exclude=minutely,hourly&units=imperial&appid=255055a794435e93d10c1986c06d9c9b
 
   //on click append button to list and pull weather for input city
   searchButton.on("click", function (event) {
@@ -97,7 +101,7 @@ $(document).ready(function () {
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       currentCity +
       "&units=imperial&appid=255055a794435e93d10c1986c06d9c9b";
-    getCurrentWeatherAPI();
+    getWeatherAPI();
 
     //append new item to list with properties and click event functionality
     var appendLi = $("<button>")
@@ -111,7 +115,7 @@ $(document).ready(function () {
           currentCity +
           "&units=imperial&appid=255055a794435e93d10c1986c06d9c9b";
 
-        getCurrentWeatherAPI();
+        getWeatherAPI();
       });
 
     cityList.append(appendLi);
