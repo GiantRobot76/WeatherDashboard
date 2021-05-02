@@ -1,6 +1,9 @@
-var requestUrl =
-  "https://api.openweathermap.org/data/2.5/weather?q=Denver&units=imperial&appid=255055a794435e93d10c1986c06d9c9b";
+var searchButton = $("#search-button");
+var cityInput = $("#city-input");
+var currentCity;
 
+var requestUrl;
+//   "https://api.openweathermap.org/data/2.5/weather?q=los+angeles&appid=255055a794435e93d10c1986c06d9c9b";
 // "https://api.openweathermap.org/data/2.5/weather?q={city name}&appid=255055a794435e93d10c1986c06d9c9b"
 
 var fcstRequestURL = "";
@@ -18,8 +21,15 @@ function getCurrentWeatherAPI() {
       return response.json();
     })
     .then(function (data) {
+      if (data.cod == "404") {
+        cityName.text("City Not Found");
+        return;
+      }
       cityName.text(data.name);
       console.log(data);
+
+      if (data.cod == "404") {
+      }
 
       localTemperature.text(data.main.temp);
       localWind.text(data.wind.speed);
@@ -53,7 +63,15 @@ function getCurrentWeatherAPI() {
 //     });
 // }
 
-cityName.text();
+//on click append button to list and pull weather for input city
+searchButton.on("click", function (event) {
+  event.preventDefault();
 
-getCurrentWeatherAPI();
-// getFcstAPI();
+  //get city in input field. If it is two words, replace the " " with a "+" as required by the API"
+  currentCity = cityInput.val().replace(" ", "+").trim();
+  requestUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    currentCity +
+    "&units=imperial&appid=255055a794435e93d10c1986c06d9c9b";
+  getCurrentWeatherAPI();
+});
