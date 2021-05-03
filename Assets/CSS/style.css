@@ -24,9 +24,10 @@ header {
 
 #weather-box {
   height: 400px;
+  width: 60%;
   border: black solid 2px;
   margin-top: 20px;
-  margin-left: 400px;
+  margin-left: 20px;
 }
 
 .format-headline {
@@ -43,10 +44,18 @@ header {
   margin-top: 10px;
 }
 
+.fcst-box {
+  border: black solid 2px;
+  width: 60%;
+  margin-left: 40px;
+  flex-direction: row;
+}
+
 .fcst-card {
   background: navy;
   color: white;
   border: white solid 2px;
+  max-width: 200px;
 }
 
 .fcst-icon {

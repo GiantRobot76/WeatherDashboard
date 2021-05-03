@@ -47,10 +47,14 @@ $(document).ready(function () {
   function renderSavedItems() {
     for (var i = 0; i < savedCities.length; i++) {
       currentCity = savedCities[i].cityname;
+
+      //keep original format for 2 name cities for display on appended li
+      var formatCity = currentCity.replace("+", " ");
+
       var appendLi = $("<button>")
         .addClass("list-item")
         .attr("id", currentCity)
-        .text(currentCity)
+        .text(formatCity)
         .on("click", function () {
           currentCity = $(this).text();
           requestUrl =
