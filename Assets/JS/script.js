@@ -7,6 +7,7 @@ $(document).ready(function () {
   var requestUrl;
   var fcstRequestURL = "";
   var cityName = $("#city-name");
+  var currDate = $("#current-date");
   var localTemperature = $("#temp");
   var localWind = $("#wind");
   var localHumidity = $("#humidity");
@@ -75,8 +76,9 @@ $(document).ready(function () {
           return;
         }
         cityName.text(data.name);
-        //   console.log(data);
 
+        var today = moment().format(" (MM/DD/YYYY)");
+        currDate.text(today);
         localTemperature.text(data.main.temp);
         localWind.text(data.wind.speed);
         localHumidity.text(data.main.humidity);
@@ -91,7 +93,6 @@ $(document).ready(function () {
           "&exclude=minutely,hourly&units=imperial&appid=255055a794435e93d10c1986c06d9c9b";
 
         console.log(newReqUrl);
-
         fetch(newReqUrl)
           .then(function (response) {
             return response.json();
@@ -107,11 +108,11 @@ $(document).ready(function () {
             );
 
             // Set fcst dates
-            var day1 = data2.daily[0].dt;
-            var day2 = data2.daily[1].dt;
-            var day3 = data2.daily[2].dt;
-            var day4 = data2.daily[3].dt;
-            var day5 = data2.daily[4].dt;
+            var day1 = data2.daily[1].dt;
+            var day2 = data2.daily[2].dt;
+            var day3 = data2.daily[3].dt;
+            var day4 = data2.daily[4].dt;
+            var day5 = data2.daily[5].dt;
 
             fcst1Date.text(moment.unix(day1).format("MM/DD/YY"));
             fcst2Date.text(moment.unix(day2).format("MM/DD/YY"));
@@ -120,11 +121,11 @@ $(document).ready(function () {
             fcst5Date.text(moment.unix(day5).format("MM/DD/YY"));
 
             // Set fcst temps
-            var day1 = data2.daily[0].temp.day;
-            var day2 = data2.daily[1].temp.day;
-            var day3 = data2.daily[2].temp.day;
-            var day4 = data2.daily[3].temp.day;
-            var day5 = data2.daily[4].temp.day;
+            var day1 = data2.daily[1].temp.day;
+            var day2 = data2.daily[2].temp.day;
+            var day3 = data2.daily[3].temp.day;
+            var day4 = data2.daily[4].temp.day;
+            var day5 = data2.daily[5].temp.day;
 
             fcst1Temp.text(day1);
             fcst2Temp.text(day2);
@@ -133,24 +134,11 @@ $(document).ready(function () {
             fcst5Temp.text(day5);
 
             // Set fcst wind
-            var day1 = data2.daily[0].wind_speed;
-            var day2 = data2.daily[1].wind_speed;
-            var day3 = data2.daily[2].wind_speed;
-            var day4 = data2.daily[3].wind_speed;
-            var day5 = data2.daily[4].wind_speed;
-
-            fcst1Hum.text(day1);
-            fcst2Hum.text(day2);
-            fcst3Hum.text(day3);
-            fcst4Hum.text(day4);
-            fcst5Hum.text(day5);
-
-            // Set fcst wind
-            var day1 = data2.daily[0].humidity;
-            var day2 = data2.daily[1].humidity;
-            var day3 = data2.daily[2].humidity;
-            var day4 = data2.daily[3].humidity;
-            var day5 = data2.daily[4].humidity;
+            var day1 = data2.daily[1].wind_speed;
+            var day2 = data2.daily[2].wind_speed;
+            var day3 = data2.daily[3].wind_speed;
+            var day4 = data2.daily[4].wind_speed;
+            var day5 = data2.daily[5].wind_speed;
 
             fcst1Wind.text(day1);
             fcst2Wind.text(day2);
@@ -158,12 +146,25 @@ $(document).ready(function () {
             fcst4Wind.text(day4);
             fcst5Wind.text(day5);
 
+            // Set fcst humidity
+            var day1 = data2.daily[1].humidity;
+            var day2 = data2.daily[2].humidity;
+            var day3 = data2.daily[3].humidity;
+            var day4 = data2.daily[4].humidity;
+            var day5 = data2.daily[5].humidity;
+
+            fcst1Hum.text(day1);
+            fcst2Hum.text(day2);
+            fcst3Hum.text(day3);
+            fcst4Hum.text(day4);
+            fcst5Hum.text(day5);
+
             // Set fcst icon
-            var day1 = data2.daily[0].weather[0].icon;
-            var day2 = data2.daily[1].weather[0].icon;
-            var day3 = data2.daily[2].weather[0].icon;
-            var day4 = data2.daily[3].weather[0].icon;
-            var day5 = data2.daily[4].weather[0].icon;
+            var day1 = data2.daily[1].weather[0].icon;
+            var day2 = data2.daily[2].weather[0].icon;
+            var day3 = data2.daily[3].weather[0].icon;
+            var day4 = data2.daily[4].weather[0].icon;
+            var day5 = data2.daily[5].weather[0].icon;
 
             fcst1Icon.attr(
               "src",
