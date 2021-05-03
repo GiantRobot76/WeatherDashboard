@@ -24,6 +24,21 @@ $(document).ready(function () {
   var fcst3Temp = $("#day-3-temp");
   var fcst4Temp = $("#day-4-temp");
   var fcst5Temp = $("#day-5-temp");
+  var fcst1Wind = $("#day-1-wind");
+  var fcst2Wind = $("#day-2-wind");
+  var fcst3Wind = $("#day-3-wind");
+  var fcst4Wind = $("#day-4-wind");
+  var fcst5Wind = $("#day-5-wind");
+  var fcst1Hum = $("#day-1-hum");
+  var fcst2Hum = $("#day-2-hum");
+  var fcst3Hum = $("#day-3-hum");
+  var fcst4Hum = $("#day-4-hum");
+  var fcst5Hum = $("#day-5-hum");
+  var fcst1Icon = $("#fcstIcon1");
+  var fcst2Icon = $("#fcstIcon2");
+  var fcst3Icon = $("#fcstIcon3");
+  var fcst4Icon = $("#fcstIcon4");
+  var fcst5Icon = $("#fcstIcon5");
 
   //array used to manage and render local storage. Initialized to Empty or to Contain saved key:value pairs
   var savedCities = JSON.parse(localStorage.getItem("weathercities")) || [];
@@ -116,6 +131,60 @@ $(document).ready(function () {
             fcst3Temp.text(day3);
             fcst4Temp.text(day4);
             fcst5Temp.text(day5);
+
+            // Set fcst wind
+            var day1 = data2.daily[0].wind_speed;
+            var day2 = data2.daily[1].wind_speed;
+            var day3 = data2.daily[2].wind_speed;
+            var day4 = data2.daily[3].wind_speed;
+            var day5 = data2.daily[4].wind_speed;
+
+            fcst1Hum.text(day1);
+            fcst2Hum.text(day2);
+            fcst3Hum.text(day3);
+            fcst4Hum.text(day4);
+            fcst5Hum.text(day5);
+
+            // Set fcst wind
+            var day1 = data2.daily[0].humidity;
+            var day2 = data2.daily[1].humidity;
+            var day3 = data2.daily[2].humidity;
+            var day4 = data2.daily[3].humidity;
+            var day5 = data2.daily[4].humidity;
+
+            fcst1Wind.text(day1);
+            fcst2Wind.text(day2);
+            fcst3Wind.text(day3);
+            fcst4Wind.text(day4);
+            fcst5Wind.text(day5);
+
+            // Set fcst icon
+            var day1 = data2.daily[0].weather[0].icon;
+            var day2 = data2.daily[1].weather[0].icon;
+            var day3 = data2.daily[2].weather[0].icon;
+            var day4 = data2.daily[3].weather[0].icon;
+            var day5 = data2.daily[4].weather[0].icon;
+
+            fcst1Icon.attr(
+              "src",
+              "https://openweathermap.org/img/wn/" + day1 + ".png"
+            );
+            fcst2Icon.attr(
+              "src",
+              "https://openweathermap.org/img/wn/" + day2 + ".png"
+            );
+            fcst3Icon.attr(
+              "src",
+              "https://openweathermap.org/img/wn/" + day3 + ".png"
+            );
+            fcst4Icon.attr(
+              "src",
+              "https://openweathermap.org/img/wn/" + day4 + ".png"
+            );
+            fcst5Icon.attr(
+              "src",
+              "https://openweathermap.org/img/wn/" + day5 + ".png"
+            );
           });
       });
   }

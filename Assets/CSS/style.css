@@ -43,3 +43,8 @@ header {
   color: white;
   border: white solid 2px;
 }
+
+.fcst-icon {
+  max-width: 40px;
+  max-height: 40px;
+}
