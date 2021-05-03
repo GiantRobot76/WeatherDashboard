@@ -24,7 +24,7 @@ header {
 
 #weather-box {
   height: 200px;
-  border: black dashed 2px;
+  border: black solid 2px;
   margin-top: 20px;
   margin-left: 400px;
 }
@@ -36,4 +36,10 @@ header {
   border: black 1px dashed;
   border-radius: 10px;
   margin-top: 10px;
+}
+
+.fcst-card {
+  background: navy;
+  color: white;
+  border: white solid 2px;
 }

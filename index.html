@@ -41,12 +41,50 @@
           <ul class="list-group list-group-flush" id="city-list"></ul>
         </div>
       </div>
-      <section class="col-12 col-md-8 col-lg-9" id="weather-box">
-        <p><span id="city-name"></span></p>
+      <section class="col-12" id="weather-box">
+        <p><span id="city-name"></span><img id="big-icon" alt="Weather Icon"></span></p>
         <p>Temp: <span id="temp"></span> Deg F</p>
         <p>Wind: <span id="wind"></span> MPH</p>
         <p>Humidity: <span id="humidity"></span>%</p>
         <p>UV: <span id="UV"></span></p>
+      </section>
+      <section class="col-12" id="fcst-box">
+        <h3>Five Day Forecast</h3>
+        <section class="card fcst-card">
+          <p id = "day-1-date">Date</p>
+          <img>
+          <p>Temp: <span id="day-1-temp"></span></p>
+          <p>Wind</p>
+          <p>Humidity</p>
+          <section class="card fcst-card">
+            <p id = "day-2-date">Date</p>
+            <img>
+            <p >Temp: <span id="day-2-temp"></span></p>
+            <p>Wind</p>
+            <p>Humidity</p>
+            <section class="card fcst-card">
+              <p id = "day-3-date">Date</p>
+              <img>
+              <p id="day-3-temp">Temp</p>
+              <p>Wind</p>
+              <p>Humidity</p>
+              <section class="card fcst-card">
+                <p id = "day-4-date">Date</p>
+                <img>
+                <p id="day-4-temp">Temp</p>
+                <p>Wind</p>
+                <p>Humidity</p>
+                <section class="card fcst-card">
+                  <p id = "day-5-date">Date</p>
+                  <img>
+                  <p id="day-5-temp">Temp</p>
+                  <p>Wind</p>
+                  <p>Humidity</p>
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
       </section>
     </div>
   </main>
