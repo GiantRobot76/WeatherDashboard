@@ -28,6 +28,7 @@ header {
   border: black solid 2px;
   margin-top: 20px;
   margin-left: 20px;
+  display: none;
 }
 
 .format-headline {
@@ -61,4 +62,20 @@ header {
 .fcst-icon {
   max-width: 40px;
   max-height: 40px;
+}
+
+.container {
+  display: none;
+}
+
+.uv-low {
+  background-color: darkseagreen;
+}
+
+.uv-moderate {
+  background-color: yellow;
+}
+
+.uv-high {
+  background-color: red;
 }

@@ -5,7 +5,8 @@ $(document).ready(function () {
   var currentCity;
   var appendedItems = 0;
   var requestUrl;
-  var fcstRequestURL = "";
+  var bigCont = $("#big-container");
+  var wBox = $("#weather-box");
   var cityName = $("#city-name");
   var currDate = $("#current-date");
   var localTemperature = $("#temp");
@@ -76,9 +77,15 @@ $(document).ready(function () {
       .then(function (data) {
         if (data.cod == "404") {
           cityName.text("City Not Found");
-
+          wBox.attr("style", "display:block");
+          bigCont.attr("style", "display:none");
           return;
         }
+
+        //Display Current Condition and Forecast Windows if Hidden
+        bigCont.attr("style", "display:block");
+        wBox.attr("style", "display:block");
+
         cityName.text(data.name);
 
         var today = moment().format(" (MM/DD/YYYY)");
@@ -103,6 +110,14 @@ $(document).ready(function () {
           })
           .then(function (data2) {
             localUV.text(data2.current.uvi);
+
+            //set UV Color Index
+            var indexUV = data2.current.uvi;
+            if (indexUV <= 2) {
+              localUV.attr("class", "uv-low");
+            } else if (indexUV > 2 && indexUV <= 5) {
+              localUV.attr("class", "uv-moderate");
+            } else localUV.attr("class", "uv-high");
 
             //Current Day Icon
             var iconRef = data2.current.weather[0].icon;
